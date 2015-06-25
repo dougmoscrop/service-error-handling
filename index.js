@@ -35,25 +35,26 @@ module.exports = function(opts) {
 		handlers.push(errorHandler({log: opts.log}));
 	} else {
 		handlers.push(function(err, req, res, next) {
-			var status = err.status || err.statusCode;
-			var message = err.message;
+			var status = err.status || err.statusCode,
+				expose = err.expose || status < 500;
 			
-			var expose = err.expose && status && message;
+			var error = {};
 			
-			status = expose ? status : 500;
-			message = expose ? message: 'Internal Server Error';
+			if (expose && status) {
+				if (err.message) {
+					error.message = err.message;
+				}
+				
+				if (err.errors) {
+					error.errors = err.errors
+				}
+			} else {
+				status = 500;
+				error.message = 'Internal Server Error';
+			}
 			
 			res.status(status);
-			res.format({
-				json: function () {
-					res.json({
-						message: message
-					});
-				},
-				html: function () {
-					res.send(message);
-				}
-			});
+			res.json(error);
 		});
 	}
 
