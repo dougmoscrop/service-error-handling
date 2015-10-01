@@ -1,6 +1,6 @@
 {
-  "name": "service-error-handling",
-  "version": "1.1.0",
+  "name": "@microservice/error-handling",
+  "version": "1.0.0",
   "description": "Common error handling logic",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/dougmoscrop/service-error-handling"
+    "url": "http://github.com/node-microservice/error-handling"
   },
   "keywords": [
     "express",
@@ -18,9 +18,9 @@
   "author": "Doug Moscrop",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dougmoscrop/service-error-handling/issues"
+    "url": "https://github.com/node-microservice/error-handling/issues"
   },
-  "homepage": "https://github.com/dougmoscrop/service-error-handling",
+  "homepage": "https://github.com/node-microservice/error-handling",
   "dependencies": {
     "errorhandler": "^1.3.6",
     "http-errors": "^1.3.1"
